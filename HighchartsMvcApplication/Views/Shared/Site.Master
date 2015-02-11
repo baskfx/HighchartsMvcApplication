@@ -77,11 +77,11 @@
                 //global: { useUTC: true },
                 series: [
                     {
-                        name: 'Users',
-                        data: data.Users
+                        name: 'Tasks of ' + data.Name,
+                        data: data.Tasks
                     },
                     {
-                        name: 'Apps',
+                        name: "total apps",
                         data: data.Apps
                     }
                 ]
