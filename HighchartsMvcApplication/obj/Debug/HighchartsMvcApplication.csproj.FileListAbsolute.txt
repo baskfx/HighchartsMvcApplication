@@ -1,0 +1,4 @@
+c:\Projects\HighchartsMvcApplication\HighchartsMvcApplication\bin\HighchartsMvcApplication.dll
+c:\Projects\HighchartsMvcApplication\HighchartsMvcApplication\bin\HighchartsMvcApplication.pdb
+c:\Projects\HighchartsMvcApplication\HighchartsMvcApplication\obj\Debug\HighchartsMvcApplication.dll
+c:\Projects\HighchartsMvcApplication\HighchartsMvcApplication\obj\Debug\HighchartsMvcApplication.pdb
