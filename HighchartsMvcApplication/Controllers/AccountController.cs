@@ -149,5 +149,12 @@ namespace HighchartsMvcApplication.Controllers
             return View();
         }
 
+        [HttpGet]
+        public JsonResult Jsonp()
+        {
+            int[] data = new int[] { 23, 4, 34, 34, 54, 35, 34, 45, 34, 54, 35, 4, 35, 53, 35, 43 };
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

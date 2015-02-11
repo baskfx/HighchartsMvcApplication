@@ -26,6 +26,7 @@
 
     $(function () {
 
+        myDataChart();
         csvChart();
 
         temperatureChart();
@@ -33,6 +34,20 @@
         schemeChart();
 
     });
+
+    function myDataChart() {
+        var options = {
+            chart: {
+                renderTo: 'container-jsonp',
+                type: 'spline'
+            },
+            series: [{}]
+        };
+        $.getJSON('/account/jsonp', function (data) {
+            options.series[0].data = data;
+            var chart = new Highcharts.Chart(options);
+        });
+    }
 
     function csvChart() {
         // Get the CSV and create the chart

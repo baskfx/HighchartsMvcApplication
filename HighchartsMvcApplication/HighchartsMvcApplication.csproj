@@ -75,7 +75,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\template.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\data.js" />
+    <Content Include="Scripts\exporting.js" />
+    <Content Include="Scripts\highcharts.js" />
+    <Content Include="Scripts\highslide-full.min.js" />
+    <Content Include="Scripts\highslide.config.js" />
+    <Content Include="Content\highslide.css" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
