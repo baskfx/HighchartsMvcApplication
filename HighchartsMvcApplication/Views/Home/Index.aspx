@@ -10,6 +10,12 @@
         setDarkTheme();
     </script>
     <p>
+        <div id="container-date" style="width:100%; height:400px;"></div>
+    </p>
+    <p>
+        <div id="container-gauge" style="width:300px; height:200px;"></div>
+    </p>
+    <p>
         <div id="container-jsonp" style="width:100%; height:400px;"></div>
     </p>
     <p>
@@ -18,4 +24,5 @@
     <p>
         <div id="ajax-container" style="width:100%; height:400px;"></div>
     </p>
+
 </asp:Content>

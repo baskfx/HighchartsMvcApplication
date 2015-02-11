@@ -156,5 +156,34 @@ namespace HighchartsMvcApplication.Controllers
             return Json(data, JsonRequestBehavior.AllowGet);
         }
 
+        public class App
+        {
+            public int appid;
+            public string name;
+            public DateTime stamp;
+            public int users;
+        }
+
+        [HttpGet]
+        public JsonResult Stats()
+        {
+            //int[] data = new int[] { 23, 4, 34, 34, 54, 35, 34, 45, 34, 54, 35, 4, 35, 53, 35, 43 };
+            List<App> apps = new List<App>();
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-1), users = 543 });
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-2), users = 876 });
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-3), users = 463 });
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-4), users = 56 });
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-5), users = 107 });
+
+            var res = new {
+                stamp = (from x in apps select x.stamp),
+                users = (from x in apps select x.users),
+                appid = (from x in apps select x.appid),
+                appname = (from x in apps select x.name)
+            };
+
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
