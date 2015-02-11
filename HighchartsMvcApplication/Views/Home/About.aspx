@@ -10,6 +10,6 @@
         sandTheme();
     </script>
     <p>
-        <div id="container-scheme" style="width:100%; height:400px;"></div>
+        <div id="container-scheme" style="width:100%; height:400px; align:center;"></div>
     </p>
 </asp:Content>

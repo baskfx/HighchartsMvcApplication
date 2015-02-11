@@ -5,17 +5,17 @@
 <head runat="server">
     <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
     <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://www.highcharts.com/joomla/templates/highsoft_bootstrap/assets/css/template.css" type="text/css" />
+    <link rel="stylesheet" href="../../Content/template.css" type="text/css" />
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="http://code.highcharts.com/highcharts.js"></script>
-<script src="http://code.highcharts.com/modules/data.js"></script>
-<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="../../Scripts/jquery-1.8.2.min.js"></script>
+<script src="../../Scripts/highcharts.js"></script>
+<script src="../../Scripts/data.js"></script>
+<script src="../../Scripts/exporting.js"></script>
 
 <!-- Additional files for the Highslide popup effect -->
-<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide-full.min.js"></script>
-<script type="text/javascript" src="http://www.highcharts.com/media/com_demo/highslide.config.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="http://www.highcharts.com/media/com_demo/highslide.css" />
+<script type="text/javascript" src="../../Scripts/highslide-full.min.js"></script>
+<script type="text/javascript" src="../../Scripts/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="../../Content/highslide.css" />
 
 </head>
 
