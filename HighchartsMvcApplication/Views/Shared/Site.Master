@@ -40,18 +40,53 @@
     });
 
     function myDataChart2() {
-        var options = {
-            chart: {
-                renderTo: 'container-date',
-                type: 'spline'
-            },
-            series: [{},{}]
-        };
         $.getJSON('/account/stats', function (data) {
-            options.series[0].name = "Users";
-            options.series[0].data = data.users;
-            options.series[1].name = "data";
-            options.series[1].data = data.appid;
+
+            var dates = [];
+            for (var i = 0; i < data.Stamp.length; i++) {
+                var date = new Date(data.Stamp[i] * 1000);
+                dates[i] = date;
+            }
+
+            var options = {
+                chart: {
+                    renderTo: 'container-date',
+                    type: 'spline'
+                },
+                yAxis: {
+                    title: {
+                        text: 'Speed'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 100,
+                    categories: dates,
+                    labels: {
+                        formatter: function () {
+                            var monthStr = Highcharts.dateFormat('%e %b \'%y %H:%M:%S', this.value);
+                            return monthStr;
+                        }
+                    }
+                },
+                //global: { useUTC: true },
+                series: [
+                    {
+                        name: 'Users',
+                        data: data.Users
+                    },
+                    {
+                        name: 'Apps',
+                        data: data.Apps
+                    }
+                ]
+            };
+
             var chart = new Highcharts.Chart(options);
         });
     }

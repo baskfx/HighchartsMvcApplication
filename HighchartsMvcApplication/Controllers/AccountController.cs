@@ -167,22 +167,39 @@ namespace HighchartsMvcApplication.Controllers
         [HttpGet]
         public JsonResult Stats()
         {
-            //int[] data = new int[] { 23, 4, 34, 34, 54, 35, 34, 45, 34, 54, 35, 4, 35, 53, 35, 43 };
             List<App> apps = new List<App>();
-            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-1), users = 543 });
-            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-2), users = 876 });
-            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-3), users = 463 });
-            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-4), users = 56 });
-            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddHours(-5), users = 107 });
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddDays(-1), users = 543 });
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddDays(-2), users = 876 });
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddDays(-3), users = 463 });
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddDays(-4), users = 56 });
+            apps.Add(new App { appid = 147, name = "app", stamp = DateTime.Now.AddDays(-5), users = 107 });
 
             var res = new {
                 stamp = (from x in apps select x.stamp),
+                dt = (from x in apps select x.stamp.TimeOfDay.TotalMilliseconds),
+                dtstr = (from x in apps select x.stamp.ToString("dd/MM/yyyy")),
                 users = (from x in apps select x.users),
                 appid = (from x in apps select x.appid),
                 appname = (from x in apps select x.name)
             };
 
-            return Json(res, JsonRequestBehavior.AllowGet);
+            List<long> days = new List<long>();
+            List<decimal> values = new List<decimal>();
+
+            foreach (var item in apps.OrderBy(x=>x.stamp))
+            {
+                values.Add(item.users);
+                days.Add((long)((item.stamp-(new DateTime(1970,1,1))).TotalSeconds));
+            }
+
+            dynamic data = new
+            {
+                Stamp = days,
+                Users = values,
+                Apps = (from x in apps select x.appid)
+            };
+
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
     }
