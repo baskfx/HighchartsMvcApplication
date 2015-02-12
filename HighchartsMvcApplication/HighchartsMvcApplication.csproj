@@ -77,6 +77,7 @@
   <ItemGroup>
     <Content Include="Content\template.css" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\charts.js" />
     <Content Include="Scripts\data.js" />
     <Content Include="Scripts\exporting.js" />
     <Content Include="Scripts\highcharts.js" />
