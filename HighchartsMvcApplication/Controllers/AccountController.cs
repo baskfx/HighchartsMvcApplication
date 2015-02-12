@@ -251,6 +251,7 @@ namespace HighchartsMvcApplication.Controllers
         [HttpGet]
         public JsonResult Temperature()
         {
+            Random rnd = new Random();
             return Json(
                 new
                 {
@@ -271,7 +272,7 @@ namespace HighchartsMvcApplication.Controllers
                     months = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" },
                     t = new
                     {
-                        data1 = new { name = "Tokio", data = new double[] { 7, 6, 9, 14, 18, 21, 25, 26, 23, 18, 13, 9 } },
+                        data1 = new { name = "Tokio", data = Enumerable.Range(0, 12).Select(i => rnd.NextDouble()*30-i).ToArray() },
                         data2 = new { name = "New York", data = new double[] { -0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5 } },
                         data3 = new { name = "Berlin", data = new double[] { -0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0 } },
                         data4 = new { name = "London", data = new double[] { 3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8 } }

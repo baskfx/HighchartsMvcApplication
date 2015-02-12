@@ -9,6 +9,9 @@
     <script type="text/javascript">
         setDarkTheme();
     </script>
+
+    <div id='chart_div' style='width: 700px; height: 240px;'></div>
+
     <p>
         <div id="container-temp" style="width:100%; height:400px;"></div>
     </p>
