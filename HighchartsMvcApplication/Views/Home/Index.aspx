@@ -10,16 +10,20 @@
         setDarkTheme();
     </script>
 
-    <div id='chart_div' style='width: 700px; height: 240px;'></div>
+    <table><tr>
+    <td>
+            <div id='chart_div' style='width: 700px; height: 240px;'></div>
+    </td>
+    <td>
+            <div id="container-gauge" style="width:300px; height:200px;"></div>
+    </td>
+    </tr></table>
 
     <p>
         <div id="container-temp" style="width:100%; height:400px;"></div>
     </p>
     <p>
         <div id="container-date" style="width:100%; height:400px;"></div>
-    </p>
-    <p>
-        <div id="container-gauge" style="width:300px; height:200px;"></div>
     </p>
     <p>
         <div id="container" style="width:100%; height:400px;"></div>

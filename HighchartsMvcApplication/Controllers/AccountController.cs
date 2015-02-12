@@ -245,38 +245,27 @@ namespace HighchartsMvcApplication.Controllers
         public class TempData
         {
             public string name;
-            public int[] temterature;
+            public int[] data;
         }
 
         [HttpGet]
         public JsonResult Temperature()
         {
             Random rnd = new Random();
+
+            int axisXdataCount = 24;
+            List<TempData> tt = new List<TempData>();
+            for (int i = 0; i < 7; i++)
+            {
+                tt.Add(new TempData { name = "City" + (i + 1), data = Enumerable.Range(0, axisXdataCount).Select(x => rnd.Next(30) - 15 + x).ToArray() });
+            }
+
             return Json(
                 new
                 {
-                    time = new[] {
-                        (long)((DateTime.Now.AddMonths(-11) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-10) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-9) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-8) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-7) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-6) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-5) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-4) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-3) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-2) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(-1) - (new DateTime(1970, 1, 1))).TotalSeconds),
-                        (long)((DateTime.Now.AddMonths(0) - (new DateTime(1970, 1, 1))).TotalSeconds)
-                    },
-                    months = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" },
-                    t = new
-                    {
-                        data1 = new { name = "Tokio", data = Enumerable.Range(0, 12).Select(i => rnd.NextDouble()*30-i).ToArray() },
-                        data2 = new { name = "New York", data = new double[] { -0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5 } },
-                        data3 = new { name = "Berlin", data = new double[] { -0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0 } },
-                        data4 = new { name = "London", data = new double[] { 3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8 } }
-                    }
+                    time = Enumerable.Range(0, axisXdataCount).Select(x => (long)((DateTime.Now.AddMonths(-(axisXdataCount - 1 - x)) - (new DateTime(1970, 1, 1))).TotalSeconds)).ToArray(), 
+                    //months = new[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" }, 
+                    t = tt.ToList()
                 }
                 , JsonRequestBehavior.AllowGet);
         }
